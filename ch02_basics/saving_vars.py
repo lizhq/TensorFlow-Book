@@ -1,6 +1,8 @@
 # # Saving Variables in TensorFlow
 
-import tensorflow as tf
+import tensorflow.compat.v1 as  tf
+tf.compat.v1.disable_eager_execution()
+
 sess = tf.InteractiveSession()
 
 
@@ -28,7 +30,7 @@ for i in range(1, len(raw_data)):
         updater.eval()
 
 
-save_path = saver.save(sess, "spikes.ckpt")
+save_path = saver.save(sess, "./tmp/spikes.ckpt")
 print("spikes data saved in file: %s" % save_path)
 
 

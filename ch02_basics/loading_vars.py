@@ -1,6 +1,9 @@
 # # Loading Variables in TensorFlow
 
-import tensorflow as tf
+
+import tensorflow.compat.v1 as  tf
+tf.compat.v1.disable_eager_execution()
+
 sess = tf.InteractiveSession()
 
 
@@ -11,7 +14,7 @@ sess = tf.InteractiveSession()
 spikes = tf.Variable([False]*8, name='spikes')
 saver = tf.train.Saver()
 
-saver.restore(sess, "spikes.ckpt")
+saver.restore(sess,  "./tmp/spikes.ckpt")
 print(spikes.eval())
 
 sess.close()
